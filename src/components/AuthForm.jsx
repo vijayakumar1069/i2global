@@ -62,16 +62,15 @@ export default function AuthForm({ signUp = true }) {
   });
 
   const onSubmit = async (formData) => {
-
-
     const backendUrl = getUrl(); // Define backend URL based on environment
     const endpoint = isSignUp
       ? `${backendUrl}/api/v1/user-auth/register`
       : `${backendUrl}/api/v1/user-auth/login`;
 
+    console.log(endpoint);
+
     // Directly get the response data
     const responseData = await fetchData(endpoint, "POST", formData);
-
 
     // Update the dispatch call
     if (responseData && responseData.statusCode === 200) {
