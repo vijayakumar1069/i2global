@@ -22,6 +22,7 @@ export const metadata = {
 
 export default async function UserLayout({ children }) {
   const t = await getCookie();
+  console.log(t);
   if (!t) {
     redirect("/signIn");
   }
