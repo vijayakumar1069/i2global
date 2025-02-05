@@ -1,8 +1,9 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // Default: localStorage for web
+
 import userReducer from "./slice"; // Adjust the path to the slice
+import storage from "./storage";
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -22,7 +23,6 @@ export const makeStore = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore non-serializable actions from redux-persist
         ignoredActions: [
           "persist/PERSIST",
           "persist/REHYDRATE",
@@ -30,7 +30,7 @@ export const makeStore = configureStore({
           "persist/FLUSH",
           "persist/PAUSE",
           "persist/PURGE",
-        ],
+        ], // Ignore Redux Persist-specific actions
       },
     }),
 });
