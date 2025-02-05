@@ -4,5 +4,6 @@ export const getCookie = async () => {
 
   // Retrieve token from cookies
   const token = cookieStore.get("access_token")?.value;
+  console.log(token);
   return token;
 };

@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async redirects() {
+  async rewrites() {
     return [
       {
-        source: "/dashboard",
-        destination: "/signIn",
-        permanent: false,
+        source: "/api/:path*",
+        destination: "http://localhost:4000/:path*",
       },
     ];
   },
